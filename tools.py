@@ -26,13 +26,14 @@ def save_image(content, file_path):
         file.write(content)
 
 
-def download_image(url, path='images', filename='image', verify=True):
+def download_image(url, path='images', filename=None, verify=True):
     extension = check_url_is_image(url)
     response = requests.get(url, verify=verify)
     response.raise_for_status()
 
     os.makedirs(path, exist_ok=True)
-    filename = filename + '.' + extension
+    if not filename:
+        filename = 'image' + '.' + extension
     file_path = os.path.join(path, filename)
     save_image(response.content, file_path)
 
@@ -43,6 +44,9 @@ def scan_for_files_in_folder(foldername, recursion=False):
         for filename in filenames:
             files.append(os.path.join(dirpath, filename))
     return files
+
+
+
 
 if __name__ == '__main__':
     download_image('https://imgs.xkcd.com/comics/earth_temperature_timeline.png')
