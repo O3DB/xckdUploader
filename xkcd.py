@@ -12,6 +12,7 @@ def get_last_comic_num():
 
 
 #TODO: хранить информацию о загруженных комиксах и исключать при генерации номера
+#TODO: не сохраняя комикс загружать в ВК
 def generate_comic_num():
     max_num = get_last_comic_num()
     return random.randint(1, max_num)
@@ -32,8 +33,5 @@ def download_random_comic():
     img_url = comic_info['img']
     filename = img_url.split('/')[-1]
 
-    download_image(url=img_url, filename=filename)
+    download_image(url=img_url, filename=filename, path='./')
     return comic_info, filename
-
-
-print(download_random_comic())
