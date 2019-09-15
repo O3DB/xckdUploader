@@ -5,5 +5,5 @@ load_dotenv()
 
 CONFIG = {
     'VK_TOKEN': os.getenv('VK_TOKEN'),
-    'GROUP_ID': 186157500,
+    'GROUP_ID': os.getenv('GROUP_ID'),
 }
