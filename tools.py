@@ -26,7 +26,7 @@ def download_image(url, path='images', filename=None, verify=True):
 
     os.makedirs(path, exist_ok=True)
     if not filename:
-        filename = 'image' + '.' + extension
+        filename = 'image.{}'.format(extension)
     file_path = os.path.join(path, filename)
     save_image(response.content, file_path)
 
