@@ -48,7 +48,7 @@ def save_wall_photo(access_token, params):
     return vk_data['response'][0]['id'], vk_data['response'][0]['owner_id']
 
 
-def wallpost(access_token, photo_id, owner_id, group_id, message):
+def post_on_wall(access_token, photo_id, owner_id, group_id, message):
     method_name = 'wall.post'
     params = {
         'attachments': 'photo' + str(owner_id) + '_' + str(photo_id),
@@ -93,5 +93,5 @@ def upload_image_to_group_wall(access_token, group_id, image_path, image_comment
     logger.debug(f'Image saved. Image id: {photo_id}, owner_id: {owner_id}. \
         Start posting image to the group wall')
 
-    wallpost(access_token, photo_id, owner_id, group_id, image_comment)
+    post_on_wall(access_token, photo_id, owner_id, group_id, image_comment)
     logger.debug('Image posted')
