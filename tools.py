@@ -7,7 +7,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def check_url_is_image(url, extensions=['jpg', 'jpeg', 'png', 'bmp', 'tif', 'svg']):
+def check_url_is_image(url, extensions=['.jpg', '.jpeg', '.png', '.bmp', '.tif', '.svg']):
     _, extension = os.path.splitext(url)
     if extension not in extensions:
         raise ValueError('Object is not an image')
@@ -26,7 +26,7 @@ def download_image(url, path='images', filename=None, verify=True):
 
     os.makedirs(path, exist_ok=True)
     if not filename:
-        filename = 'image.{}'.format(extension)
+        filename = 'image{}'.format(extension)
     file_path = os.path.join(path, filename)
     save_image(response.content, file_path)
 
