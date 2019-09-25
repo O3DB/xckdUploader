@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 
 def check_url_is_image(url, extensions=['jpg', 'jpeg', 'png', 'bmp', 'tif', 'svg']):
-    extension = url.split('.')[-1]
+    _, extension = os.path.splitext(url)
     if extension not in extensions:
         raise ValueError('Object is not an image')
     return extension
