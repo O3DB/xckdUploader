@@ -28,10 +28,15 @@ def main():
                 )
             logger.info('Comic uploaded to the group wall')
 
-            os.remove(filename)
-            logger.info('Image removed')
         except HTTPError:
             logger.warning('HTTP Error!')
+
+        try:
+            logger.info('Image removed')
+            os.remove(filename)
+        except:
+            continue
+
         time.sleep(24 * 3600) #1 day sleep
 
 
